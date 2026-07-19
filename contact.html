@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact — [TEAM NAME]</title>
-<meta name="description" content="Get in touch with [Team Name].">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -22,40 +21,40 @@
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="races.html">Races &amp; Kit</a></li>
       <li><a href="contact.html" aria-current="page">Contact</a></li>
-      <li><a class="btn btn--primary" href="pricing.html#consult">Get a free consult</a></li>
+      <li><a class="btn btn--primary" href="pricing.html#consult">Free consult</a></li>
     </ul>
   </div>
 </nav>
 
-<header class="hero" style="padding:72px 0 64px;">
+<header class="hero" style="min-height:50vh; padding:140px 0 80px;">
   <div class="container">
     <p class="eyebrow">Contact</p>
-    <h1 class="hero__title" style="font-size:clamp(34px,5vw,56px);">Questions before you join? Ask away.</h1>
-    <p class="hero__sub">Looking for a full consultation about coaching? Use the form on the <a href="pricing.html#consult" style="color:var(--hivis); text-decoration:underline;">pricing page</a> instead — this one's for everything else.</p>
+    <h1 class="hero__title" style="font-size:clamp(36px,5vw,56px);">Questions before<br><em>you join?</em></h1>
+    <p class="hero__sub">Looking for a coaching consultation? Use the form on the <a href="pricing.html#consult" style="color:var(--accent);">pricing page</a>. This one's for everything else.</p>
   </div>
 </header>
 
 <section class="section">
   <div class="container">
     <div class="grid grid--2" style="gap:48px; align-items:flex-start;">
-
       <div>
-        <div class="bibcard" style="margin-bottom:24px;">
+        <div class="bibcard reveal" style="margin-bottom:24px;">
+          <div class="bibcard__holes" aria-hidden="true"></div>
+          <div class="bibcard__dashes" aria-hidden="true"></div>
           <span class="bibcard__num">No. 014</span>
           <h3 class="bibcard__title" style="font-size:20px;">Email</h3>
-          <p class="bibcard__body"><a href="mailto:hello@example.com">hello@example.com</a> — we read everything, usually within a day or two.</p>
+          <p class="bibcard__body"><a href="mailto:hello@example.com" style="color:var(--accent);">hello@example.com</a> — we read everything, usually within a day or two.</p>
         </div>
-        <div class="bibcard">
+        <div class="bibcard reveal">
+          <div class="bibcard__holes" aria-hidden="true"></div>
+          <div class="bibcard__dashes" aria-hidden="true"></div>
           <span class="bibcard__num">No. 027</span>
           <h3 class="bibcard__title" style="font-size:20px;">Find us</h3>
-          <p class="bibcard__body">[Add Instagram / Strava club / other socials here]</p>
+          <p class="bibcard__body">[Add Instagram, Strava club, or other socials here]</p>
         </div>
       </div>
-
-      <form class="form" data-ajax-form data-fallback-email="hello@example.com"
-            action="https://formspree.io/f/mlgqedba" method="POST">
-        <!-- Replace YOUR_FORM_ID with a real Formspree (or similar) endpoint before launch.
-             Alternative: on Netlify, add data-netlify="true" and name="contact" to this <form> tag. -->
+      <form class="form reveal-right" data-ajax-form data-fallback-email="hello@example.com"
+            action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <div class="form__row">
           <div class="form__field">
             <label for="c-name">Name</label>
@@ -69,13 +68,12 @@
         <div class="form__row form__row--single">
           <div class="form__field">
             <label for="c-message">Message</label>
-            <textarea id="c-message" name="message" rows="5" required></textarea>
+            <textarea id="c-message" name="message" rows="6" required></textarea>
           </div>
         </div>
         <button class="btn btn--primary" type="submit" data-label="Send message">Send message</button>
         <p class="form__status" role="status"></p>
       </form>
-
     </div>
   </div>
 </section>
@@ -83,8 +81,8 @@
 <footer class="footer">
   <div class="container footer__inner">
     <div>
-      <div class="footer__brand">[TEAM NAME]</div>
-      <p class="muted" style="margin-top:10px; max-width:320px; color:rgba(255,255,255,.6);">Affordable, data-driven triathlon coaching out of Dallas, TX and Indianapolis, IN.</p>
+      <div class="footer__brand">[TEAM<span>·</span>NAME]</div>
+      <p class="footer__lede">Affordable, data-driven triathlon coaching out of Dallas, TX and Indianapolis, IN.</p>
     </div>
     <ul class="footer__links">
       <li><a href="index.html">Home</a></li>
@@ -93,7 +91,7 @@
       <li><a href="races.html">Races &amp; Kit</a></li>
     </ul>
   </div>
-  <div class="container footer__fine">© <span id="y"></span> [Team Name]. All prices and policies are subject to change — see the pricing page for current rates.</div>
+  <div class="container footer__fine">© <span id="y"></span> [Team Name]</div>
 </footer>
 
 <script>document.getElementById('y').textContent = new Date().getFullYear();</script>

@@ -413,4 +413,4 @@ ul{ margin:0; padding:0; }
 .footer__fine{
   font-family:var(--mono); font-size:11px; color:var(--ink-3);
   border-top:1px solid var(--line); padding-top:24px; letter-spacing:.02em;
-}
+}   

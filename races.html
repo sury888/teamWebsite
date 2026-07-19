@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — [TEAM NAME]</title>
+<title>Races &amp; Team Kit — [TEAM NAME]</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -19,61 +19,86 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">Coaches</a></li>
       <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="races.html">Races &amp; Kit</a></li>
-      <li><a href="contact.html" aria-current="page">Contact</a></li>
+      <li><a href="races.html" aria-current="page">Races &amp; Kit</a></li>
+      <li><a href="contact.html">Contact</a></li>
       <li><a class="btn btn--primary" href="pricing.html#consult">Free consult</a></li>
     </ul>
   </div>
 </nav>
 
-<header class="hero" style="min-height:50vh; padding:140px 0 80px;">
+<header class="hero" style="min-height:60vh; padding:140px 0 80px;">
   <div class="container">
-    <p class="eyebrow">Contact</p>
-    <h1 class="hero__title" style="font-size:clamp(36px,5vw,56px);">Questions before<br><em>you join?</em></h1>
-    <p class="hero__sub">Looking for a coaching consultation? Use the form on the <a href="pricing.html#consult" style="color:var(--accent);">pricing page</a>. This one's for everything else.</p>
+    <p class="eyebrow">Races &amp; team kit</p>
+    <h1 class="hero__title" style="font-size:clamp(36px,5vw,60px);">Train apart.<br><em>Show up together.</em></h1>
+    <p class="hero__sub">We train remotely, but a few times a year the whole team shows up in person — same kit, same house, same starting line.</p>
   </div>
 </header>
 
 <section class="section">
   <div class="container">
-    <div class="grid grid--2" style="gap:48px; align-items:flex-start;">
-      <div>
-        <div class="bibcard reveal" style="margin-bottom:24px;">
-          <div class="bibcard__holes" aria-hidden="true"></div>
-          <div class="bibcard__dashes" aria-hidden="true"></div>
-          <span class="bibcard__num">No. 014</span>
-          <h3 class="bibcard__title" style="font-size:20px;">Email</h3>
-          <p class="bibcard__body"><a href="mailto:hello@example.com" style="color:var(--accent);">hello@example.com</a> — we read everything, usually within a day or two.</p>
-        </div>
-        <div class="bibcard reveal">
-          <div class="bibcard__holes" aria-hidden="true"></div>
-          <div class="bibcard__dashes" aria-hidden="true"></div>
-          <span class="bibcard__num">No. 027</span>
-          <h3 class="bibcard__title" style="font-size:20px;">Find us</h3>
-          <p class="bibcard__body">[Add Instagram, Strava club, or other socials here]</p>
-        </div>
+    <div class="section__head reveal">
+      <p class="section__kicker">This season — in order</p>
+      <h2 class="section__title">Five team races. Opt in to any of them.</h2>
+      <p class="section__lede">You're never required to attend. Pick the races that fit your season. Flat $325/room covers lodging and meals for any race below.</p>
+    </div>
+    <div class="reveal">
+      <div class="race-row">
+        <span class="race-row__num">01</span>
+        <div><div class="race-row__name">[Sprint race name]</div><div class="race-row__meta">[Month] · [City, State]</div></div>
+        <span class="race-row__dist">Sprint</span>
       </div>
-      <form class="form reveal-right" data-ajax-form data-fallback-email="hello@example.com"
-            action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <div class="form__row">
-          <div class="form__field">
-            <label for="c-name">Name</label>
-            <input type="text" id="c-name" name="name" required>
-          </div>
-          <div class="form__field">
-            <label for="c-email">Email</label>
-            <input type="email" id="c-email" name="email" required>
-          </div>
-        </div>
-        <div class="form__row form__row--single">
-          <div class="form__field">
-            <label for="c-message">Message</label>
-            <textarea id="c-message" name="message" rows="6" required></textarea>
-          </div>
-        </div>
-        <button class="btn btn--primary" type="submit" data-label="Send message">Send message</button>
-        <p class="form__status" role="status"></p>
-      </form>
+      <div class="race-row">
+        <span class="race-row__num">02</span>
+        <div><div class="race-row__name">[Olympic race name]</div><div class="race-row__meta">[Month] · [City, State]</div></div>
+        <span class="race-row__dist">Olympic</span>
+      </div>
+      <div class="race-row">
+        <span class="race-row__num">03</span>
+        <div><div class="race-row__name">[Half-Iron race name]</div><div class="race-row__meta">[Month] · [City, State]</div></div>
+        <span class="race-row__dist">Half Ironman</span>
+      </div>
+      <div class="race-row">
+        <span class="race-row__num">04</span>
+        <div><div class="race-row__name">[Half-Iron race name]</div><div class="race-row__meta">[Month] · [City, State]</div></div>
+        <span class="race-row__dist">Half Ironman</span>
+      </div>
+      <div class="race-row">
+        <span class="race-row__num">05</span>
+        <div><div class="race-row__name">[Full Iron race name]</div><div class="race-row__meta">[Month] · [City, State]</div></div>
+        <span class="race-row__dist">Full Ironman</span>
+      </div>
+    </div>
+    <p style="margin-top:20px; font-family:var(--mono); font-size:12px; color:var(--ink-3);">Drop in real race names, dates, and cities once the calendar is confirmed.</p>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="kitpanel">
+      <div class="kitpanel__art reveal-left" aria-label="Team kit photography placeholder"></div>
+      <div class="reveal-right">
+        <p class="section__kicker">Team kit</p>
+        <h2 class="section__title" style="margin-bottom:16px;">One kit. Every athlete in it.</h2>
+        <p style="color:var(--ink-2); margin-bottom:18px;">Matching kit makes the team visible at a race — easy to spot your people in a sea of strangers on a start line. Each athlete pays $50; we cover the other $100 of the $150 production cost.</p>
+        <ul style="list-style:none; padding:0;">
+          <li style="padding:10px 0; border-bottom:1px solid var(--line); color:var(--ink-2); font-size:15px;">Tri top, shorts, and [add pieces — cap, run singlet, etc.]</li>
+          <li style="padding:10px 0; border-bottom:1px solid var(--line); color:var(--ink-2); font-size:15px;">Order directly from an online team store — no in-person fitting</li>
+          <li style="padding:10px 0; color:var(--ink-2); font-size:15px;">One-time purchase; yours to keep race after race</li>
+        </ul>
+        <a class="btn btn--ghost" href="pricing.html" style="margin-top:22px;">See full pricing →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section center">
+  <div class="container">
+    <div class="section__head reveal" style="margin:0 auto 36px;">
+      <p class="section__kicker">Ready when you are</p>
+      <h2 class="section__title">Pick a race. We'll be there.</h2>
+    </div>
+    <div class="reveal" style="display:flex; justify-content:center;">
+      <a class="btn btn--primary" href="pricing.html#consult">Book a free consultation</a>
     </div>
   </div>
 </section>
@@ -88,7 +113,7 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">Coaches</a></li>
       <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="races.html">Races &amp; Kit</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </div>
   <div class="container footer__fine">© <span id="y"></span> [Team Name]</div>
