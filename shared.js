@@ -258,43 +258,36 @@ document.addEventListener('DOMContentLoaded', function () {
   // ─────────────────────────────────────────────────────────────
 // SAFE LETTER-BY-LETTER HERO TITLES
 // ─────────────────────────────────────────────────────────────
+document.querySelectorAll(".hero__title").forEach(title => {
+    const pieces = title.innerHTML.split(/(<[^>]+>)/g);
 
-document.querySelectorAll('.hero__title').forEach(title => {
-  const originalHTML = title.innerHTML;
+    let delay = 0;
+    let html = "";
 
-  // Step 1: Extract tags and replace them with placeholders
-  const tagRegex = /<\/?[^>]+>/g;
-  const tags = [];
-  let safeText = originalHTML.replace(tagRegex, match => {
-    tags.push(match);
-    return `[[TAG${tags.length - 1}]]`;
-  });
+    pieces.forEach(piece => {
 
-  // Step 2: Split safe text into characters
-  let result = '';
-  let delay = 0;
+        // Keep HTML tags exactly as they are
+        if (/^<[^>]+>$/.test(piece)) {
+            html += piece;
+            return;
+        }
 
-  for (let i = 0; i < safeText.length; i++) {
-    const ch = safeText[i];
+        // Animate only text
+        for (const char of piece) {
 
-    // Restore tags
-    if (safeText.startsWith('[[TAG', i)) {
-      const end = safeText.indexOf(']]', i);
-      const index = safeText.substring(i + 5, end);
-      result += tags[index];
-      i = end;
-      continue;
-    }
+            if (char === " ") {
+                html += " ";
+                continue;
+            }
 
-    // Normal characters
-    result += `<span class="char" style="transition-delay:${delay}ms">${ch}</span>`;
-    delay += 32;
-  }
+            html += `<span class="char" style="transition-delay:${delay}ms">${char}</span>`;
+            delay += 32;
+        }
 
-  // Step 3: Replace hero title with animated version
-  title.innerHTML = result;
+    });
+
+    title.innerHTML = html;
 });
-
 
 
 });
