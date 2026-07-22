@@ -255,45 +255,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
     title.innerHTML = html;
   });*/
-  document.querySelectorAll('.hero__title').forEach(title => {
-  const original = title.innerHTML;
+  // ─────────────────────────────────────────────────────────────
+// SAFE LETTER-BY-LETTER HERO TITLES
+// ─────────────────────────────────────────────────────────────
 
-  // Temporarily protect tags
-  let safe = original
-    .replace(/<br\s*\/?>/g, '[[BR]]')
-    .replace(/<em>/g, '[[EM]]')
-    .replace(/<\/em>/g, '[[EMEND]]');
+document.querySelectorAll('.hero__title').forEach(title => {
+  const originalHTML = title.innerHTML;
 
-  let html = '';
+  // Step 1: Extract tags and replace them with placeholders
+  const tagRegex = /<\/?[^>]+>/g;
+  const tags = [];
+  let safeText = originalHTML.replace(tagRegex, match => {
+    tags.push(match);
+    return `[[TAG${tags.length - 1}]]`;
+  });
+
+  // Step 2: Split safe text into characters
+  let result = '';
   let delay = 0;
 
-  for (let i = 0; i < safe.length; i++) {
-    const ch = safe[i];
+  for (let i = 0; i < safeText.length; i++) {
+    const ch = safeText[i];
 
     // Restore tags
-    if (safe.startsWith('[[BR]]', i)) {
-      html += '<br>';
-      i += 5;
-      continue;
-    }
-    if (safe.startsWith('[[EM]]', i)) {
-      html += '<em>';
-      i += 4;
-      continue;
-    }
-    if (safe.startsWith('[[EMEND]]', i)) {
-      html += '</em>';
-      i += 7;
+    if (safeText.startsWith('[[TAG', i)) {
+      const end = safeText.indexOf(']]', i);
+      const index = safeText.substring(i + 5, end);
+      result += tags[index];
+      i = end;
       continue;
     }
 
     // Normal characters
-    html += `<span class="char" style="transition-delay:${delay}ms">${ch}</span>`;
+    result += `<span class="char" style="transition-delay:${delay}ms">${ch}</span>`;
     delay += 32;
   }
 
-  title.innerHTML = html;
+  // Step 3: Replace hero title with animated version
+  title.innerHTML = result;
 });
+
 
 
 });
