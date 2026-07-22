@@ -4,9 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact — Monkey Business</title>
+
+<!-- Updated font stack -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Big+Shoulders+Condensed:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,7 +24,9 @@
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="races.html">Races &amp; Kit</a></li>
       <li><a href="contact.html" aria-current="page">Contact</a></li>
-      <li><a class="btn btn--primary" href="pricing.html#consult">Free consult</a></li>
+
+      <!-- Updated to gold button -->
+      <li><a class="btn btn--gold" href="pricing.html#consult">Free consult</a></li>
     </ul>
   </div>
 </nav>
@@ -29,8 +34,14 @@
 <header class="hero" style="min-height:50vh; padding:140px 0 80px;">
   <div class="container">
     <p class="eyebrow">Contact</p>
-    <h1 class="hero__title" style="font-size:clamp(36px,5vw,56px);">Questions before<br><em>you join?</em></h1>
-    <p class="hero__sub">Looking for a coaching consultation? Use the form on the <a href="pricing.html#consult" style="color:var(--accent);">pricing page</a>. This one's for everything else.</p>
+    <h1 class="hero__title" style="font-size:clamp(36px,5vw,56px);">
+      Questions before<br><em>you join?</em>
+    </h1>
+    <p class="hero__sub">
+      Looking for a coaching consultation? Use the form on the 
+      <a href="pricing.html#consult" style="color:var(--accent);">pricing page</a>. 
+      This one's for everything else.
+    </p>
   </div>
 </header>
 
@@ -42,8 +53,12 @@
           <div class="bibcard__holes" aria-hidden="true"></div>
           <div class="bibcard__dashes" aria-hidden="true"></div>
           <h3 class="bibcard__title" style="font-size:20px;">Email</h3>
-          <p class="bibcard__body"><a href="mailto:hello@example.com" style="color:var(--accent);">hello@example.com</a> — we will get back to you withina day or two.</p>
+          <p class="bibcard__body">
+            <a href="mailto:hello@example.com" style="color:var(--accent);">hello@example.com</a> — 
+            we will get back to you within a day or two.
+          </p>
         </div>
+
         <div class="bibcard reveal">
           <div class="bibcard__holes" aria-hidden="true"></div>
           <div class="bibcard__dashes" aria-hidden="true"></div>
@@ -51,8 +66,10 @@
           <p class="bibcard__body">[Add Instagram, Strava club, or other socials here]</p>
         </div>
       </div>
+
       <form class="form reveal-right" data-ajax-form data-fallback-email="hello@example.com"
             action="https://formspree.io/f/mlgqedba" method="POST">
+
         <div class="form__row">
           <div class="form__field">
             <label for="c-name">Name</label>
@@ -63,12 +80,14 @@
             <input type="email" id="c-email" name="email" required>
           </div>
         </div>
+
         <div class="form__row form__row--single">
           <div class="form__field">
             <label for="c-message">Question</label>
             <textarea id="c-message" name="message" rows="6" required></textarea>
           </div>
         </div>
+
         <button class="btn btn--primary" type="submit" data-label="Send message">Send message</button>
         <p class="form__status" role="status"></p>
       </form>
