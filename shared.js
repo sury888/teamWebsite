@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // ─────────────────────────────────────────────────────────────
   // LETTER-BY-LETTER HERO TITLES
   // ─────────────────────────────────────────────────────────────
-  document.querySelectorAll('.hero__title').forEach(title => {
+  /*document.querySelectorAll('.hero__title').forEach(title => {
     const text = title.innerHTML;
     const chars = [...text];
 
@@ -254,6 +254,46 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     title.innerHTML = html;
-  });
+  });*/
+  document.querySelectorAll('.hero__title').forEach(title => {
+  const original = title.innerHTML;
+
+  // Temporarily protect tags
+  let safe = original
+    .replace(/<br\s*\/?>/g, '[[BR]]')
+    .replace(/<em>/g, '[[EM]]')
+    .replace(/<\/em>/g, '[[EMEND]]');
+
+  let html = '';
+  let delay = 0;
+
+  for (let i = 0; i < safe.length; i++) {
+    const ch = safe[i];
+
+    // Restore tags
+    if (safe.startsWith('[[BR]]', i)) {
+      html += '<br>';
+      i += 5;
+      continue;
+    }
+    if (safe.startsWith('[[EM]]', i)) {
+      html += '<em>';
+      i += 4;
+      continue;
+    }
+    if (safe.startsWith('[[EMEND]]', i)) {
+      html += '</em>';
+      i += 7;
+      continue;
+    }
+
+    // Normal characters
+    html += `<span class="char" style="transition-delay:${delay}ms">${ch}</span>`;
+    delay += 32;
+  }
+
+  title.innerHTML = html;
+});
+
 
 });
