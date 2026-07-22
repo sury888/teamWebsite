@@ -414,3 +414,51 @@ ul{ margin:0; padding:0; }
   font-family:var(--mono); font-size:11px; color:var(--ink-3);
   border-top:1px solid var(--line); padding-top:24px; letter-spacing:.02em;
 } 
+/* =========================================================
+   Luxury background images per page
+   ========================================================= */
+
+.hero {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+}
+
+/* Page-specific backgrounds */
+.hero--home {
+  background-image: url('images/home-bg.jpg');
+}
+
+.hero--coaches {
+  background-image: url('images/win.png');
+}
+
+.hero--pricing {
+  background-image: url('images/grit.png');
+}
+
+.hero--races {
+  background-image: url('images/race.png');
+}
+
+.hero--contact {
+  background-image: url('images/contact-bg.jpg');
+}
+
+/* Luxury fade overlay */
+.hero::before {
+  background-color: rgba(0,0,0,0.45);
+  mix-blend-mode: multiply;
+}
+/* Subtle background drift */
+.hero {
+  animation: bgDrift 22s ease-in-out infinite;
+}
+
+@keyframes bgDrift {
+  0%   { background-position: center center; }
+  50%  { background-position: center 48%; }
+  100% { background-position: center center; }
+}
+
