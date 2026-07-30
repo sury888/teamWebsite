@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // MOBILE NAV TOGGLE
   // ─────────────────────────────────────────────────────────────
   const toggle = document.querySelector('.nav__toggle');
+  const menu = document.querySelector(".nav__links");
+
   const links  = document.querySelector('.nav__links');
   if (toggle && links) {
     toggle.addEventListener('click', function () {
@@ -26,6 +28,13 @@ document.addEventListener('DOMContentLoaded', function () {
       a.addEventListener('click', () => links.classList.remove('is-open'));
     });
   }
+  toggle.addEventListener("click", () => {
+    menu.classList.toggle("open");
+    toggle.setAttribute(
+        "aria-expanded",
+        menu.classList.contains("open")
+    );
+});
 
 
   // ─────────────────────────────────────────────────────────────
@@ -163,12 +172,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const lerp = (a, b, n) => (1 - n) * a + n * b;
 
-    window.addEventListener('mousemove', e => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-
-      cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-    });
 
     function animateRing() {
       ringX = lerp(ringX, mouseX, 0.12);
@@ -192,27 +195,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ─────────────────────────────────────────────────────────────
   // MAGNETIC BUTTONS (28% strength)
-  // ─────────────────────────────────────────────────────────────
-  const magneticEls = document.querySelectorAll('.btn, button, .magnetic');
 
-  magneticEls.forEach(el => {
-    const strength = 0.28;
-
-    el.addEventListener('mousemove', e => {
-      const rect = el.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-
-      const dx = (e.clientX - cx);
-      const dy = (e.clientY - cy);
-
-      el.style.transform = `translate(${dx * strength}px, ${dy * strength}px)`;
-    });
-
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = 'translate(0,0)';
-    });
-  });
 
 
   // ─────────────────────────────────────────────────────────────
