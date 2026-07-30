@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head >
+<link rel="icon" href="images/gorillaOnly.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Races &amp; Team Kit — Monkey Business</title>
+<title>Races &amp; Team Kit | Monkey Business</title>
 
 <!-- Updated font stack -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,8 +17,9 @@
 
 <nav class="nav">
   <div class="nav__inner">
-    <a class="nav__logo" href="index.html">Monkey<span>·</span>Business<span>·</span>Coaching</a>
-    <button class="nav__toggle" aria-expanded="false" aria-label="Toggle menu">MENU</button>
+<a class="nav__logo" href="index.html">
+    <img src="images/titleMonk.png" alt="Monkey Business Endurance">
+</a>      <button class="nav__toggle" aria-expanded="false" aria-label="Toggle menu">MENU</button>
     <ul class="nav__links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">Coaches</a></li>
@@ -31,10 +33,10 @@
   </div>
 </nav>
 
-<header class="hero" style="min-height:60vh; padding:140px 0 80px;">
+<header class="hero hero--races" style="min-height:90vh">
   <div class="container">
     <p class="eyebrow">Races &amp; team kit</p>
-    <h1 class="hero__title" style="font-size:clamp(36px,5vw,60px);">
+    <h1 class="hero__title">
       Train apart.<br><em>Show up together.</em>
     </h1>
     <p class="hero__sub">
@@ -49,10 +51,21 @@
       <p class="section__kicker">This season — in order</p>
       <h2 class="section__title">Five team races. Opt in to any of them.</h2>
       <p class="section__lede">
-        You're never required to attend, but these are the races the team will have a house for. Pick the races that fit your season and swing into the race with your team. Flat $250/room covers lodging and pre‑race team dinner for any race below. (Must be part of the team for at least two months prior)
+        You're never required to attend, but these are the races the team will have a house for. Pick the races that fit your season and swing into the race with your team. Flat $250/room covers lodging and pre‑race team dinner for any race below. (Must be part of the team for at least three months prior or be prepaid)
       </p>
     </div>
 
+     <div class="reveal">
+      <div class="race-row">
+        <span class="race-row__num">00</span>
+        <div>
+          <div class="race-row__name">Race Schedule for 2027 Coming Soon!</div>
+        </div>
+        <span class="race-row__dist">TBD</span>
+      </div>
+
+    </section>
+<!--
     <div class="reveal">
       <div class="race-row">
         <span class="race-row__num">01</span>
@@ -100,26 +113,38 @@
       </div>
     </div>
 
-    <p style="margin-top:20px; font-family:var(--mono); font-size:12px; color:var(--ink-3);">
-      Drop in real race names, dates, and cities once the calendar is confirmed.
-    </p>
-  </div>
-</section>
+  -->
 
 <section class="section section--alt">
   <div class="container">
     <div class="kitpanel">
-      <div class="kitpanel__art reveal-left" aria-label="Team kit photography placeholder"></div>
+
+      <div class="kitpanel__art reveal-left">
+
+    <img
+        src="images/front.png"
+        alt="Monkey Business Endurance kit front"
+        class="kitpanel__img kitpanel__img--front">
+
+    <img
+        src="images/back.png"
+        alt="Monkey Business Endurance kit back"
+        class="kitpanel__img">
+
+</div>
 
       <div class="reveal-right">
         <p class="section__kicker">Team kit</p>
         <h2 class="section__title" style="margin-bottom:16px;">One kit. Every athlete in it.</h2>
 
         <p style="color:var(--ink-2); margin-bottom:18px;">
-          Matching kit brings the team together during the race — find familiarity in a sea of strangers on a start line. Each athlete pays $90; we cover the other $110 of the $200 production cost. (Shipping not included)
+          Matching kit brings the team together during the race — find familiarity in a sea of strangers on a start line. We cover $105 of each athlete's kit cost to deliver quality and unity. (Shipping not included)
         </p>
 
         <ul style="list-style:none; padding:0;">
+          <li style="padding:10px 0; border-bottom:1px solid var(--line); color:var(--ink-2); font-size:15px;">
+           $95 for Custom Standard Mezza Varlo Kit. $135 for Custom Summit Varlo Aero Kit.
+          </li>
           <li style="padding:10px 0; border-bottom:1px solid var(--line); color:var(--ink-2); font-size:15px;">
             T‑shirts, swim caps, and more coming soon!
           </li>
@@ -128,7 +153,88 @@
           </li>
         </ul>
 
-        <a class="btn btn--ghost" href="pricing.html" style="margin-top:22px;">See full pricing →</a>
+
+<form class="form" data-ajax-form
+      data-fallback-email="monkeybusinessendurance@gmail.com"
+      action="https://formspree.io/f/xpqvylyg"
+      method="POST"
+      style="margin-top:8px;">
+
+      <div style="margin-top:1px; margin-bottom:22px;">
+  <h3 style="font-size:28px; margin:8px 0 10px;">
+    Team Kit Interest Form
+  </h3>
+
+  <p style="color:var(--ink-2); line-height:1.7;">
+    Let us know which items you're interested in. This helps us estimate demand
+    and notify you when ordering opens.
+  </p>
+</div>
+  <input type="hidden" name="form" value="Kit Interest">
+
+  <div class="form__row">
+    <div class="form__field">
+      <label for="kit-name">Name</label>
+      <input
+        type="text"
+        id="kit-name"
+        name="name"
+        placeholder="Your name"
+        required>
+    </div>
+
+    <div class="form__field">
+      <label for="kit-product">Product</label>
+      <select id="kit-product" name="product" required>
+        <option value="">Select a product</option>
+        <option>Mezza Tri Suit - $95</option>
+        <option>Summit Varlo Aero Kit - $135</option>
+        <option>T shirt - $17</option>
+        <option>Polo - $38</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form__row">
+    <div class="form__field">
+      <label for="kit-size">Size</label>
+      <select id="kit-size" name="size" required>
+        <option value="">Select size</option>
+        <option>XS</option>
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
+        <option>XL</option>
+        <option>XXL</option>
+      </select>
+    </div>
+
+    <div class="form__field">
+      <label for="kit-gender">Gender / Fit</label>
+      <select id="kit-gender" name="gender" required>
+        <option value="">Select fit</option>
+        <option>Men's</option>
+        <option>Women's</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form__row form__row--single">
+    <div class="form__field">
+      <label for="kit-notes">Notes</label>
+      <textarea
+        id="kit-notes"
+        name="notes"
+        rows="4"
+        placeholder="Questions, preferred fit, additional items, etc."></textarea>
+    </div>
+  </div>
+
+  <button class="btn btn--primary" type="submit">
+    Submit Kit Interest
+  </button>
+
+</form>
       </div>
     </div>
   </div>
@@ -149,24 +255,29 @@
 
 <footer class="footer">
   <div class="container footer__inner">
-    <div>
-      <div class="footer__brand">Monkey<span>·</span>Business<span>·</span>Coaching</div>
-      <p class="footer__lede">Dallas, TX<span>·</span>Lafayette, IN<span>·</span>King of Prussia, PA</p>
+
+    <div class="footer__left">
+
+      <a href="index.html" class="footer__brand-logo">
+        <img src="images/whiteMon.png" alt="Monkey Business Endurance">
+      </a>
+
+      <p class="footer__lede">
+        Affordable, data-driven triathlon coaching
+        <br><br>
+        Dallas, TX · Perkasie, PA · West Lafayette, IN
+      </p>
+
+
     </div>
 
-    <ul class="footer__links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">Coaches</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
   </div>
 
   <div class="container footer__fine">
     © <span id="y"></span> Monkey Business
   </div>
 </footer>
-
+<img src="images/whiteMon.png" alt="Monkey Business Endurance" style="display:none;">
 <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 <script src="shared.js"></script>
 </body>

@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // MOBILE NAV TOGGLE
   // ─────────────────────────────────────────────────────────────
   const toggle = document.querySelector('.nav__toggle');
+  const menu = document.querySelector(".nav__links");
+
   const links  = document.querySelector('.nav__links');
   if (toggle && links) {
     toggle.addEventListener('click', function () {
@@ -26,6 +28,13 @@ document.addEventListener('DOMContentLoaded', function () {
       a.addEventListener('click', () => links.classList.remove('is-open'));
     });
   }
+  toggle.addEventListener("click", () => {
+    menu.classList.toggle("open");
+    toggle.setAttribute(
+        "aria-expanded",
+        menu.classList.contains("open")
+    );
+});
 
 
   // ─────────────────────────────────────────────────────────────
@@ -163,12 +172,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const lerp = (a, b, n) => (1 - n) * a + n * b;
 
-    window.addEventListener('mousemove', e => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-
-      cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-    });
 
     function animateRing() {
       ringX = lerp(ringX, mouseX, 0.12);
@@ -192,27 +195,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ─────────────────────────────────────────────────────────────
   // MAGNETIC BUTTONS (28% strength)
-  // ─────────────────────────────────────────────────────────────
-  const magneticEls = document.querySelectorAll('.btn, button, .magnetic');
 
-  magneticEls.forEach(el => {
-    const strength = 0.28;
-
-    el.addEventListener('mousemove', e => {
-      const rect = el.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-
-      const dx = (e.clientX - cx);
-      const dy = (e.clientY - cy);
-
-      el.style.transform = `translate(${dx * strength}px, ${dy * strength}px)`;
-    });
-
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = 'translate(0,0)';
-    });
-  });
 
 
   // ─────────────────────────────────────────────────────────────
@@ -258,43 +241,36 @@ document.addEventListener('DOMContentLoaded', function () {
   // ─────────────────────────────────────────────────────────────
 // SAFE LETTER-BY-LETTER HERO TITLES
 // ─────────────────────────────────────────────────────────────
+document.querySelectorAll(".hero__title").forEach(title => {
+    const pieces = title.innerHTML.split(/(<[^>]+>)/g);
 
-document.querySelectorAll('.hero__title').forEach(title => {
-  const originalHTML = title.innerHTML;
+    let delay = 0;
+    let html = "";
 
-  // Step 1: Extract tags and replace them with placeholders
-  const tagRegex = /<\/?[^>]+>/g;
-  const tags = [];
-  let safeText = originalHTML.replace(tagRegex, match => {
-    tags.push(match);
-    return `[[TAG${tags.length - 1}]]`;
-  });
+    pieces.forEach(piece => {
 
-  // Step 2: Split safe text into characters
-  let result = '';
-  let delay = 0;
+        // Keep HTML tags exactly as they are
+        if (/^<[^>]+>$/.test(piece)) {
+            html += piece;
+            return;
+        }
 
-  for (let i = 0; i < safeText.length; i++) {
-    const ch = safeText[i];
+        // Animate only text
+        for (const char of piece) {
 
-    // Restore tags
-    if (safeText.startsWith('[[TAG', i)) {
-      const end = safeText.indexOf(']]', i);
-      const index = safeText.substring(i + 5, end);
-      result += tags[index];
-      i = end;
-      continue;
-    }
+            if (char === " ") {
+                html += " ";
+                continue;
+            }
 
-    // Normal characters
-    result += `<span class="char" style="transition-delay:${delay}ms">${ch}</span>`;
-    delay += 32;
-  }
+            html += `<span class="char" style="transition-delay:${delay}ms">${char}</span>`;
+            delay += 32;
+        }
 
-  // Step 3: Replace hero title with animated version
-  title.innerHTML = result;
+    });
+
+    title.innerHTML = html;
 });
-
 
 
 });
