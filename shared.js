@@ -1,6 +1,27 @@
 document.addEventListener('DOMContentLoaded', function () {
 
   // ─────────────────────────────────────────────────────────────
+  // TIMELINE TABS (mobile: Sury / Paarth)
+  // ─────────────────────────────────────────────────────────────
+  const timeline = document.querySelector('.timeline');
+  const timelineTabs = document.querySelectorAll('.timeline-tab');
+
+  if (timeline && timelineTabs.length) {
+    timelineTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const who = tab.dataset.tab; // "sury" | "paarth"
+        timeline.dataset.active = who;
+
+        timelineTabs.forEach(t => {
+          const on = t === tab;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+      });
+    });
+  }
+
+  // ─────────────────────────────────────────────────────────────
   // NAV SCROLL CLASS
   // ─────────────────────────────────────────────────────────────
   const nav = document.querySelector('.nav');
@@ -273,6 +294,7 @@ document.querySelectorAll(".hero__title").forEach(title => {
 
     title.innerHTML = html;
 });
+
 
 
 });
