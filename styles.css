@@ -1164,21 +1164,40 @@ a:hover{ color:var(--accent-bright); }
   .eyebrow{ justify-content:center; text-align:center;margin-bottom:0 !important; }
 
   /* no green hue on mobile hero */
-  .hero::after{ display:none !important; opacity:0 !important; }
+   /* no green glow orb */
+  .hero::after{
+    display:none !important;
+    opacity:0 !important;
+  }
+
+  /* default overlay for OTHER pages (coaches, pricing, etc.) */
   .hero::before{
-    background:linear-gradient(to bottom, rgba(0,0,0,.40), rgba(0,0,0,.55), rgba(9,10,9,.92)) !important;
+    background:linear-gradient(
+      to bottom,
+      rgba(0,0,0,.35),
+      rgba(0,0,0,.45),
+      rgba(9,10,9,.85)
+    ) !important;
     opacity:1 !important;
   }
 
-  .hero--home{
-    background-image:
-      linear-gradient(to bottom, rgba(0,0,0,.30) 0%, rgba(0,0,0,.40) 40%, rgba(9,10,9,.90) 100%),
-      url("images/mobileSwimAC.png") !important;
-    background-size:cover !important;
-    background-position:center center !important;
-    background-repeat:no-repeat !important;
-    min-height:75vh;
+  /* HOME — photo first, light overlay only */
+  .hero--home::before{
+    background:linear-gradient(
+      to bottom,
+      rgba(0,0,0,.05) 0%,
+      rgba(0,0,0,.12) 50%,
+      rgba(9,10,9,.55) 100%
+    ) !important;
   }
+
+ .hero--home{
+  background-image:url("images/swimac.png") !important;
+  background-size:cover !important;
+  background-position:22% center !important; /* was 18% — lower = more to the left */
+  background-repeat:no-repeat !important;
+  min-height:75vh;
+}
   .hero--coaches{
     background-size: cover !important;
     background-position: 35% 65% !important;
@@ -1230,7 +1249,19 @@ a:hover{ color:var(--accent-bright); }
   .bibcard__title{ font-size:1.4rem; }
   .bibcard__stats{ grid-template-columns:repeat(2, 1fr); gap:18px 12px; }
 
+  .eyebrow::before{
+    display:none !important;
+    content:none !important;
+    width:0 !important;
+  }
+
   /* Timeline tabs */
+  /* =========================================================
+   TIMELINE — mobile (tabs + line + card alignment)
+   Put this INSIDE @media (max-width: 900px) { ... }
+   ========================================================= */
+
+  /* Tabs — Sury / Paarth */
   .timeline-tabs{
     display:flex;
     gap:10px;
@@ -1260,14 +1291,43 @@ a:hover{ color:var(--accent-bright); }
     color:#fff;
     box-shadow:0 8px 20px rgba(0,0,0,.3);
   }
-  .timeline__header{ display:none !important; }
-  .timeline{ margin-top:8px; max-width:100%; padding:0 18px; }
+
+  /* Hide desktop dual header on mobile */
+  .timeline__header{
+    display:none !important;
+  }
+
+  .timeline{
+    margin-top:8px;
+    max-width:100%;
+    padding:0 18px;
+    position:relative;
+  }
+
+  /* Vertical line — centered in the 30px dot column (15px = middle) */
   .timeline::before{
+    content:"";
+    position:absolute;
     left:15px !important;
+    top:0;
+    bottom:0;
     width:2px !important;
     transform:none !important;
+    background:linear-gradient(
+      to bottom,
+      transparent,
+      var(--accent) 8%,
+      var(--accent) 92%,
+      transparent
+    ) !important;
   }
-  .timeline__center::before{ display:none !important; content:none !important; }
+
+  /* Kill extra lines from older rules */
+  .timeline__center::before{
+    display:none !important;
+    content:none !important;
+  }
+
   .timeline__row{
     display:grid !important;
     grid-template-columns:30px 1fr !important;
@@ -1275,36 +1335,75 @@ a:hover{ color:var(--accent-bright); }
     align-items:start !important;
     margin-bottom:24px !important;
   }
+
   .timeline__center{
     grid-column:1 !important;
+    grid-row:1 !important;
     width:30px !important;
     display:flex !important;
     justify-content:center !important;
     align-items:flex-start !important;
-    padding-top:22px !important;
+    align-self:start !important;
+    padding-top:20px !important;
+    height:auto !important;
+    position:relative !important;
   }
+
   .timeline__dot{
     width:12px !important;
     height:12px !important;
+    border-radius:50%;
+    background:var(--accent) !important;
     border:3px solid var(--bg) !important;
     box-shadow:0 0 0 2px rgba(31,111,74,.35) !important;
+    margin:0 !important;
+    flex-shrink:0;
+    align-self:flex-start !important;
+    z-index:2;
   }
+
   .timeline__finish{
     width:22px !important;
     height:22px !important;
     font-size:11px !important;
+    border-radius:50%;
+    background:var(--accent) !important;
     border:3px solid var(--bg) !important;
     box-shadow:0 0 0 2px rgba(31,111,74,.35) !important;
+    margin:0 !important;
+    flex-shrink:0;
+    align-self:flex-start !important;
+    z-index:2;
   }
-  .timeline__left{ grid-column:2; text-align:left; display:block; }
-  .timeline__right{ display:none; }
-  .timeline[data-active="paarth"] .timeline__left{ display:none; }
-  .timeline[data-active="paarth"] .timeline__right{
-    display:block; grid-column:2; text-align:left;
-  }
+
+  /* Sury + Paarth — same placement so dots match both */
   .timeline__left,
   .timeline__right{
-    width:100%; max-width:none; margin:0; padding:16px 18px;
+    grid-column:2 !important;
+    grid-row:1 !important;
+    align-self:start !important;
+    width:100% !important;
+    max-width:none !important;
+    margin:0 !important;
+    padding:16px 18px !important;
+    text-align:left !important;
+  }
+
+  /* Default: Sury visible */
+  .timeline__left{ display:block !important; }
+  .timeline__right{ display:none !important; }
+
+  /* Paarth tab */
+  .timeline[data-active="paarth"] .timeline__left{ display:none !important; }
+  .timeline[data-active="paarth"] .timeline__right{ display:block !important; }
+
+  /* No hover lift on mobile */
+  .timeline__row:hover .timeline__left,
+  .timeline__row:hover .timeline__right{
+    transform:none !important;
+  }
+  .timeline__row:hover .timeline__dot{
+    transform:none !important;
   }
 
   .footer{ padding:40px 0 20px; }
@@ -1329,5 +1428,7 @@ a:hover{ color:var(--accent-bright); }
   .kitpanel__img{ max-width:min(48vw, 160px); }
   .btn{ padding:14px 22px; font-size:15px; }
   .nav__logo img{ height:34px; max-width:130px; }
-  .hero--home{ background-position:center 20% !important; min-height:70vh; }
-}
+  .hero--home{
+    background-position:2% center !important;
+    min-height:auto;
+  }}
