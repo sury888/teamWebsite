@@ -1227,28 +1227,38 @@ a:hover{ color:var(--accent-bright); }
   .section__head{ margin-bottom:32px; }
 
   /* Cards — neutral, no green wash on mobile */
-  .bibcard{
-    padding:22px 18px;
-    background:var(--surface);
-    border-color:rgba(255,255,255,.10);
-    box-shadow:none;
+  .bibcard,
+  .card{
+    background:#1a1b1c !important;          /* neutral dark gray */
+    border-color:rgba(255,255,255,.10) !important;
+    box-shadow:none !important;
   }
-  .bibcard::before{ background:none !important; opacity:0 !important; }
+
+  /* kill green glow wash */
+  .bibcard::before{
+    background:none !important;
+    opacity:0 !important;
+  }
+
   .bibcard:hover,
   .card:hover{
-    border-color:rgba(255,255,255,.18) !important;
+    background:#1e1f20 !important;
+    border-color:rgba(255,255,255,.16) !important;
     box-shadow:0 12px 32px rgba(0,0,0,.35) !important;
-    transform:none;
+    transform:none !important;
   }
-  .bibcard:hover::before{ background:none !important; opacity:0 !important; }
-  .bibcard__num{
-    background:rgba(255,255,255,.06);
-    border-color:rgba(255,255,255,.12);
-    color:var(--ink-2);
-  }
-  .bibcard__title{ font-size:1.4rem; }
-  .bibcard__stats{ grid-template-columns:repeat(2, 1fr); gap:18px 12px; }
 
+  .bibcard:hover::before{
+    background:none !important;
+    opacity:0 !important;
+  }
+
+  /* number chips — gray, not green */
+  .bibcard__num{
+    background:rgba(255,255,255,.06) !important;
+    border-color:rgba(255,255,255,.12) !important;
+    color:rgba(246,247,245,.75) !important;
+  }
   .eyebrow::before{
     display:none !important;
     content:none !important;
@@ -1387,6 +1397,8 @@ a:hover{ color:var(--accent-bright); }
     margin:0 !important;
     padding:16px 18px !important;
     text-align:left !important;
+        background:#1a1b1c !important;
+    border-color:rgba(255,255,255,.10) !important;
   }
 
   /* Default: Sury visible */
