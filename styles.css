@@ -615,7 +615,7 @@ a:hover{ color:var(--accent-bright); }
     display:block;
     transition:transform .3s ease;
 }
-.kitpanel__img--front{ transform:scale(1.15); }
+.kitpanel__img--front{ transform:scale(1.334); }
 .kitpanel__img:hover{ transform:scale(1.03); }
 
 /* =========================================================
