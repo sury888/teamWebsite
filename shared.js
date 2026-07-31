@@ -14,27 +14,29 @@ document.addEventListener('DOMContentLoaded', function () {
   // ─────────────────────────────────────────────────────────────
   // MOBILE NAV TOGGLE
   // ─────────────────────────────────────────────────────────────
-  const toggle = document.querySelector('.nav__toggle');
-  const menu = document.querySelector(".nav__links");
+// ─────────────────────────────────────────────────────────────
+// MOBILE NAV TOGGLE  (replace your current toggle block with this)
+// ─────────────────────────────────────────────────────────────
+const toggle = document.querySelector('.nav__toggle');
+const links  = document.querySelector('.nav__links');
 
-  const links  = document.querySelector('.nav__links');
-  if (toggle && links) {
-    toggle.addEventListener('click', function () {
-      const open = links.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
+if (toggle && links) {
+  toggle.addEventListener('click', function () {
+    const open = links.classList.toggle('is-open');
+    // keep both class names in sync for safety
+    links.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.classList.toggle('nav-open', open); // locks scroll
+  });
 
-    links.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => links.classList.remove('is-open'));
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      links.classList.remove('is-open', 'open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('nav-open');
     });
-  }
-  toggle.addEventListener("click", () => {
-    menu.classList.toggle("open");
-    toggle.setAttribute(
-        "aria-expanded",
-        menu.classList.contains("open")
-    );
-});
+  });
+}
 
 
   // ─────────────────────────────────────────────────────────────
