@@ -421,7 +421,7 @@ a:hover{ color:var(--accent-bright); }
 .section--alt{ background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 .section--accent-top{ border-top:1px solid var(--line); }
 .section__head{ max-width:680px; margin-bottom:56px; }
-.section__kicker{ font-family:var(--mono); font-size:15px; text-transform:uppercase; letter-spacing:.18em; color:var(--accent); margin-bottom:12px; font-weight:700; }
+.section__kicker{ font-family:var(--mono); font-size:17px; text-transform:uppercase; letter-spacing:.18em; color:var(--accent); margin-bottom:12px; font-weight:700; }
 .section__title{ font-size:clamp(38px,4vw,60px); margin-bottom:22px; color:var(--ink); }
 .section__lede{ font-size:21px; color:var(--ink-2); line-height:1.8; max-width:850px; }
 
@@ -595,29 +595,42 @@ a:hover{ color:var(--accent-bright); }
    Kit panel
    ========================================================= */
 .kitpanel{
-    display:grid;
-    grid-template-columns:1.15fr 1fr;
-    gap:60px;
-    align-items:center;
+  display:grid;
+  grid-template-columns:1.15fr 1fr;
+  gap:60px;
+  align-items:center;
 }
-.kitpanel__art{
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    align-items:center;
-    gap:30px;
-}
-.kitpanel__img{
-    width:48%;
-    max-width:400px;
-    height:auto;
-    object-fit:contain;
-    display:block;
-    transition:transform .3s ease;
-}
-.kitpanel__img--front{ transform:scale(1.334); }
-.kitpanel__img:hover{ transform:scale(1.03); }
 
+.kitpanel__art{
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  gap:30px;
+}
+
+.kitpanel__img{
+  width:48%;
+  max-width:400px;
+  height:auto;
+  object-fit:contain;
+  display:block;
+  transform:scale(1);           /* same base size for both */
+  transition:transform .3s ease;
+}
+
+/* optional: keep front slightly larger, but hover must match */
+.kitpanel__img--front{
+  transform:scale(1.38);           /* same as the other — equal size */
+}
+
+.kitpanel__img:hover{
+  transform:scale(1.05);        /* both grow the same amount */
+}
+
+.kitpanel__img--front:hover{
+  transform:scale(1.43);        /* override so front doesn't shrink */
+}
 /* =========================================================
    Forms
    ========================================================= */
@@ -735,7 +748,7 @@ a:hover{ color:var(--accent-bright); }
     border-top:1px solid var(--line);
     text-align:center;
     color:var(--ink-3);
-    font-size:15px;
+    font-size:17px;
 }
 
 /* =========================================================
@@ -1215,11 +1228,35 @@ a:hover{ color:var(--accent-bright); }
    background-size: cover !important;
     background-position: 35% 65% !important;
   }
-
-  .kitpanel{ grid-template-columns:1fr; gap:32px; }
-  .kitpanel__art{ display:flex; flex-wrap:wrap; justify-content:center; gap:16px; }
-  .kitpanel__img{ width:auto; max-width:min(46vw, 200px); height:auto; object-fit:contain; }
-  .kitpanel__img--front{ transform:none; }
+  .kitpanel{
+    grid-template-columns:1fr;
+    gap:32px;
+  }
+  .kitpanel__art{
+    display:flex;
+    flex-wrap:nowrap;           /* keep side by side if you want */
+    justify-content:center;
+    align-items:center;
+    gap:16px;
+  }
+  .kitpanel__img{
+     width:45% !important;
+    max-width:200px !important;
+    height:auto !important;
+    object-fit:contain !important;
+    transform:none !important;  
+  }
+  .kitpanel__img--front{
+    width:65% !important;
+    max-width:200px !important;
+    height:auto !important;
+    object-fit:contain !important;
+    transform:none !important;  /* no scale on mobile */
+  }
+  .kitpanel__img:hover,
+  .kitpanel__img--front:hover{
+    transform:none !important;
+  }
 
   .section{ padding:56px 0; }
   .section__title{ font-size:clamp(1.7rem, 6vw, 2.4rem); }
@@ -1438,7 +1475,7 @@ a:hover{ color:var(--accent-bright); }
   .hero{ min-height:60vh; padding:80px 0 40px; }
   .hero__title{ font-size:2rem !important; }
   .kitpanel__img{ max-width:min(48vw, 160px); }
-  .btn{ padding:14px 22px; font-size:15px; }
+  .btn{ padding:14px 22px; font-size:17px; }
   .nav__logo img{ height:34px; max-width:130px; }
   .hero--home{
     background-position:2% center !important;
