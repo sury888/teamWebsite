@@ -848,6 +848,7 @@ a:hover{ color:var(--accent-bright); }
 }
 .hero--coaches{
     background-size:cover;
+    background-size: 100% auto !important;   /* wider than the hero → room to pan */
     background-position:center center;
     background-image:
         linear-gradient(
@@ -859,6 +860,20 @@ a:hover{ color:var(--accent-bright); }
             var(--bg) 100%
         ),
         url("images/win.png");
+}
+.hero--psych{
+    background-size: 100% auto !important;   /* wider than the hero → room to pan */
+    background-position:70% 50% !important;
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(11,12,14,0) 55%,
+            rgba(11,12,14,.15) 70%,
+            rgba(11,12,14,.45) 82%,
+            rgba(11,12,14,.75) 92%,
+            var(--bg) 100%
+        ),
+        url("images/megActiv.png");
 }
 .hero--pricing{
     background-size:cover;
@@ -1219,6 +1234,10 @@ a:hover{ color:var(--accent-bright); }
   .hero--pricing{
    background-size: cover !important;
     background-position: 35% 65% !important;
+  }
+  .hero--psych{
+   background-size: cover !important;
+    background-position: 80% 100% !important;
   }
   .hero--races{
    background-size: cover !important;
